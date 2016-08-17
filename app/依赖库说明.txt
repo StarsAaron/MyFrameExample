@@ -1,4 +1,4 @@
-ע�� butterknife #############################################################################
+注解 butterknife #############################################################################
 
 Configure your project-level build.gradle to include the 'android-apt' plugin:
 
@@ -24,8 +24,36 @@ dependencies {
   apt 'com.jakewharton:butterknife-compiler:8.2.1'
 }
 
-���ݿ� ormlite #############################################################################
-ʹ��ormlite��������
+数据库 ormlite #############################################################################
+使用ormlite添加依赖
 
 compile 'com.j256.ormlite:ormlite-android:4.48'
 compile 'com.j256.ormlite:ormlite-core:4.48'
+
+标签栏 #############################################################################
+类似TabLayout
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
+
+retrofit2 #############################################################################
+网络请求
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+okhttp3 #############################################################################
+网络访问，搭配retrofit2使用
+    compile 'com.squareup.okhttp3:okhttp:3.3.0'
+    compile 'com.squareup.okio:okio:1.7.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+
+Rxjava #############################################################################
+异步处理
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.0'
+
+图片加载 #############################################################################
+    compile 'com.squareup.picasso:picasso:2.3.2'
+
+底部栏 #############################################################################
+    compile 'com.aurelhubert:ahbottomnavigation:1.3.3'
+
