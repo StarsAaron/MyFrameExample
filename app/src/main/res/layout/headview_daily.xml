@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <com.fastbuildlibrary.widget.loopviewpager.AutoLoopViewPager
+        android:id="@+id/daily_head_autolooppager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_image_height"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_gravity="top"
+        android:background="@drawable/shadow_gradient"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/shadow_gradient_reserve"/>
+    <com.fastbuildlibrary.widget.CirclePageIndicator
+        android:id="@+id/daily_head_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:layout_gravity="bottom"/>
+</FrameLayout>

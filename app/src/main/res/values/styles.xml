@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- 应用主题 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--无ActionBar-->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/sr_window_background</item>
+    </style>
+
+    <!--AppBarLayout主题,防止图标颜色不一致显示-->
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <!--Toolbar主题-->
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <!-- 解决swiplayout activity切换时的黑屏问题 -->
+    <style name="SwipeBackTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--宽高包裹内容-->
+    <style name="WrapContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WidthMatchParent" parent="WrapContent">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="RecyclerItem" parent="WidthMatchParent">
+        <item name="cardCornerRadius">5sp</item>
+        <item name="cardElevation">5sp</item>
+        <item name="contentPadding">5sp</item>
+    </style>
+
+    <!--CollapsingToolbarLayout的expandedTitleTextAppearance文字显示样式，拉开隐藏，压缩显示-->
+    <style name="CollapsingToolbarTitleStyle.About" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+</resources>

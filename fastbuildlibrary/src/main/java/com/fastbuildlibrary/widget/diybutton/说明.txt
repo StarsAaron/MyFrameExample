@@ -1,0 +1,14 @@
+自定义Button
+
+<com.library.DiyButton
+            android:id="@+id/iv_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            fancy:fb_defaultColor="#FF30B7FA"
+            fancy:fb_focusColor="#FF345354"
+            fancy:fb_fontIconSize="15sp"
+            fancy:fb_radius="10dp"
+            fancy:fb_text="��ʼ"
+            fancy:fb_textColor="#FFFFFF" />

@@ -1,0 +1,30 @@
+网络访问和数据解析 #####################################################################
+compile 'com.google.code.gson:gson:2.2.4'
+
+兼容低版本动画 #########################################################################
+compile 'com.nineoldandroids:library:2.4.0'
+
+沉浸式布局 #############################################################################
+compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+
+// 修改状态栏颜色，4.4+生效
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus();
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarTintResource(R.color.status_bar_bg);//通知栏所需颜色
+
+
+@TargetApi(19)
+    protected void setTranslucentStatus() {
+        Window window = getWindow();
+        // Translucent status bar
+        window.setFlags(
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // Translucent navigation bar
+//        window.setFlags(
+//                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+//                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    }

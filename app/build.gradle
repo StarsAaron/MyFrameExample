@@ -1,0 +1,119 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+//签名信息文件
+Properties props = new Properties()
+props.load(new FileInputStream(file("sign.properties")))
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "com.myframe"
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        // Enabling multidex support.
+//        multiDexEnabled true
+    }
+
+    //签名
+    signingConfigs {
+        release {
+            storeFile file(props['KEYSTORE_FILE'])
+            storePassword props['KEYSTORE_PASSWORD']
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
+        }
+        debug {
+
+        }
+    }
+
+    buildTypes {
+        release {
+            //是否启用zipAlign
+            zipAlignEnabled true
+            // 是否开启混淆
+            minifyEnabled false
+            //混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 移除无用的resource文件
+            shrinkResources true
+            //签名
+//            signingConfig signingConfigs.release
+            //动态修改生成的apk文件名
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = "MyFrame_${variant.flavorName}_v${variant.versionName}_${releaseTime()}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+        debug {
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            //签名
+//            signingConfig signingConfigs.debug
+        }
+    }
+
+    //多渠道打包
+    productFlavors {
+    }
+
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
+    lintOptions {
+        abortOnError false
+    }
+
+    //出错：Error:Execution failed for task ':app:transformClassesWithDexForDebug
+    //加这个就不出错了
+//    dexOptions {
+//        preDexLibraries = false
+//        javaMaxHeapSize "4g"
+//    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:design:24.1.1'
+    compile 'com.android.support:support-v4:24.1.1'
+    compile 'com.android.support:cardview-v7:24.1.1'
+    //注解
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    compile 'com.jakewharton:butterknife:8.1.0'
+    //ORM
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile 'com.j256.ormlite:ormlite-core:4.48'
+    //标签栏
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
+    //retrofit2
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //okhttp3
+    compile 'com.squareup.okhttp3:okhttp:3.3.0'
+    compile 'com.squareup.okio:okio:1.7.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    //Rxjava
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.0'
+    //图片加载
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    //底部栏
+    compile 'com.aurelhubert:ahbottomnavigation:1.3.3'
+    compile project(':fastbuildlibrary')
+}

@@ -1,0 +1,29 @@
+<resources>
+    <!--程序名称-->
+    <string name="app_name">吱喳日报</string>
+    <!--侧边菜单-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!--菜单项-->
+    <string name="action_settings">Settings</string>
+
+    <!-- 侧边菜单子项 -->
+    <string name="item_home">主页</string>
+    <string name="item_detail">详细</string>
+    <string name="item_other">其它</string>
+    <string name="item_about">关于</string>
+
+    <!--关于activity标题-->
+    <string name="title_activity_about">AboutActivity</string>
+    <!--其它activity标题-->
+    <string name="title_activity_other">OtherActivity</string>
+    <!--详细activity标题-->
+    <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="press_again_exit">再按一次退出</string>
+    <string name="share">分享</string>
+    <string name="share_from">来自「吱喳日报」的分享:</string>
+
+    <string name="load_failed">"数据加载失败"</string>
+
+</resources>

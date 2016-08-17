@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sections">
+        <item>热闻</item>
+        <item>主题</item>
+        <item>专栏</item>
+        <item>趣闻</item>
+    </string-array>
+</resources>
