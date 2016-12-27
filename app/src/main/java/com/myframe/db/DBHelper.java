@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.myframe.config.Constant;
 
 /**
- * Created by aaron on 16-8-14.
+ * SQLiteOpenHelper 使用例子
  */
 public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_READ_TABLE = "create table read_record(_id integer primary key autoincrement,newsid varchar(20))";

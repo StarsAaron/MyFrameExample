@@ -20,4 +20,7 @@
     <!--文章详细页面图片显示区域高度-->
     <dimen name="detail_image_height">256dp</dimen>
     <dimen name="top_image_height">200dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

@@ -19,7 +19,7 @@ public class FBLBaseConstant {
     /**
      * 文件夹名称
      */
-    public static final String DIR = "/FBL";
+    public static final String DIR = "/FBLFragmentManager";
     /**
      * 图片缓存文件夹名称
      */

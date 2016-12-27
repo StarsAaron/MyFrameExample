@@ -13,6 +13,7 @@ import com.myframe.model.SectionsDetails;
 import com.myframe.model.ThemesDetails;
 
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -45,6 +46,7 @@ public interface ZhiHuDailyAPI {
      * @param id
      * @return
      */
+    @Headers("Cache-Control: public, max-age=30")
     @GET("story/{id}")
     Observable<DailyDetail> getNewsDetails(@Path("id") int id);
 

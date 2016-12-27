@@ -1,13 +1,10 @@
-package com.fastbuildlibrary.commom;
+package com.fastbuildlibrary.base;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.os.Looper;
-import android.support.v7.app.AlertDialog;
-
-import com.fastbuildlibrary.R;
 
 import java.io.File;
 import java.io.FileWriter;

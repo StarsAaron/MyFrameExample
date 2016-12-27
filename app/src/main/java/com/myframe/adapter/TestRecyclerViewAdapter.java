@@ -2,29 +2,24 @@ package com.myframe.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.fastbuildlibrary.utils.DateUtils;
-import com.myframe.R;
 import com.myframe.db.entity.TomatoTask;
 
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * RecyclerView适配器例子
  * Created by Aaron on 2016/7/14.
  */
-public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.HistoryHolder> {
+public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerViewAdapter.HistoryHolder> {
     private Context context;
     private List<TomatoTask> tomatoTasks;
 
-    public HistoryListAdapter(Context context,List<TomatoTask> tomatoTasks){
+    public TestRecyclerViewAdapter(Context context, List<TomatoTask> tomatoTasks){
         this.context = context;
         this.tomatoTasks = tomatoTasks;
     }

@@ -33,7 +33,7 @@ public class MainActivity2 extends FBLBaseActivity {
     @BindView(R.id.content)
     FrameLayout content;
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "WebViewTestActivity";
     private static final String CURR_INDEX = "currIndex";
     private static int currIndex = 0;
 

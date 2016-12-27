@@ -10,13 +10,13 @@ import com.myframe.R;
 /**
  * FragmentPagerAdapter 例子
  */
-public class HomePagerAdapter extends FragmentPagerAdapter {
+public class TestHomePagerAdapter extends FragmentPagerAdapter {
 
     private final String[] TITLES;
 
     private Fragment[] fragments;
 
-    public HomePagerAdapter(FragmentManager fm, Context context) {
+    public TestHomePagerAdapter(FragmentManager fm, Context context) {
 
         super(fm);
         TITLES = context.getResources().getStringArray(R.array.sections);

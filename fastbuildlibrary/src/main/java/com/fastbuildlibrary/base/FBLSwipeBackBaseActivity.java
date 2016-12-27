@@ -2,7 +2,6 @@ package com.fastbuildlibrary.base;
 
 import android.os.Bundle;
 
-import com.fastbuildlibrary.commom.FBLActivityManager;
 import com.fastbuildlibrary.config.FBLBaseConstant;
 import com.fastbuildlibrary.utils.LogUtils;
 import com.fastbuildlibrary.utils.ToastUtils;

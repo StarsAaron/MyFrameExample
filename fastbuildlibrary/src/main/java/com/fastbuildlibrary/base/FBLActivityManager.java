@@ -1,8 +1,17 @@
-package com.fastbuildlibrary.commom;
+package com.fastbuildlibrary.base;
 
 import android.app.Activity;
 
 import java.util.LinkedList;
+
+import static android.R.attr.description;
+import static android.R.attr.id;
+import static android.R.attr.name;
+import static android.R.attr.required;
+import static android.R.attr.thumb;
+import static android.R.attr.thumbnail;
+import static android.R.attr.type;
+import static android.R.attr.value;
 
 /**
  * 应用程序Activity管理类：用于Activity管理和应用程序退出

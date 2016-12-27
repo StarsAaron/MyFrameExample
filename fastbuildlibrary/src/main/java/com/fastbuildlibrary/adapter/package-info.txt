@@ -2,7 +2,7 @@
  * FBL框架适配器类（支持abslistview和recyclerview）
   abslistview 普通适配器
   recyclerview 适配器
- *
+
  * 
  * ForRecyclerView
  * 

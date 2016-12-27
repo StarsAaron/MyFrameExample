@@ -3,7 +3,6 @@ package com.fastbuildlibrary.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.fastbuildlibrary.commom.FBLActivityManager;
 import com.fastbuildlibrary.http.nohttp.NohttpManager;
 import com.fastbuildlibrary.utils.DialogUtils;
 import com.fastbuildlibrary.utils.LogUtils;

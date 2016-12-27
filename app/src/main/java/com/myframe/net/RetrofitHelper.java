@@ -1,6 +1,7 @@
 package com.myframe.net;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.myframe.model.DailyComment;
 import com.myframe.model.DailyDetail;
@@ -14,6 +15,7 @@ import com.myframe.utils.NetUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
@@ -83,9 +85,8 @@ public class RetrofitHelper {
 
                     mOkHttpClient = new OkHttpClient.Builder()
                             .cache(cache)
-//                            .addInterceptor(mRewriteCacheControlInterceptor)
-//                            .addNetworkInterceptor(mRewriteCacheControlInterceptor)
-//                            .addInterceptor(interceptor)
+                            .addInterceptor(new LoggingInterceptor()) //如果在拦截器中统一配置，则所有的请求都会缓存。
+                            .addNetworkInterceptor(new LoggingInterceptor())
                             .retryOnConnectionFailure(true)
                             .connectTimeout(15, TimeUnit.SECONDS)
                             .build();
@@ -94,25 +95,56 @@ public class RetrofitHelper {
         }
     }
 
-    private Interceptor mRewriteCacheControlInterceptor = new Interceptor() {
+    // 拦截器可以打印日志和设置缓存
+    // 如果我们的服务器不支持缓存，也就是响应头没有对应字段，那么我们可以使用网络拦截器实现
+    // 注意：addInterceptor和addNetworkInterceptor 需要同时设置。
+    // 这两者的区别可以参考Interceptors 拦截器。我只说一下效果，如果你只是想实现在线缓存，
+    // 那么可以只添加网络拦截器，如果只想实现离线缓存，可以使用只添加应用拦截器。
+    // 如果在拦截器中统一配置，则所有的请求都会缓存。但是在实际开发中有些接口需要保证数据的实时性
+    // ，那么我们就不能统一配置，这时可以这样：
+
+    // @Headers("Cache-Control: public, max-age=时间秒数")
+    // @GET("weilu/test") Observable<Test> getData();
+    // 1.不需要缓存：Cache-Control: no-cache或Cache-Control: max-age=0
+    // 2.如果想先显示数据，在请求。（类似于微博等）：Cache-Control: only-if-cached
+    // 通过以上配置后通过拦截器中的request.cacheControl().toString() 就可以获取到我们配置
+    // 的Cache-Control头文件，实现对应的缓存策略。
+    public class LoggingInterceptor implements Interceptor {
 
         @Override
-        public Response intercept(Chain chain) throws IOException {
-
+        public Response intercept(Interceptor.Chain chain) throws IOException {
             Request request = chain.request();
+            Log.d("LoggingInterceptor", String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
             if (!NetUtils.isConnected(context)) {
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
             }
-            Response originalResponse = chain.proceed(request);
+
+            long t1 = System.nanoTime();
+            //##########################################
+            Response response = chain.proceed(request);
+            //##########################################
+
+            long t2 = System.nanoTime();
+            Log.d("LoggingInterceptor", String.format(Locale.getDefault(), "Received response for %s in %.1fms%n%s",
+                    response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+
             if (NetUtils.isConnected(context)) {
+                //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置(注掉部分)
                 String cacheControl = request.cacheControl().toString();
-                return originalResponse.newBuilder().header("Cache-Control", cacheControl).removeHeader("Pragma").build();
+                return response.newBuilder()
+                        .header("Cache-Control", cacheControl)
+                        //.header("Cache-Control", "max-age=3600")
+                        .removeHeader("Pragma") // 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
+                        .build();
             } else {
-                return originalResponse.newBuilder().header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_TIME_LONG)
-                        .removeHeader("Pragma").build();
+                return response.newBuilder()
+                        .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_TIME_LONG)
+                        .removeHeader("Pragma")
+                        .build();
             }
         }
-    };
+    }
+
 
     /**
      * 知乎日报Api封装 方便直接调用

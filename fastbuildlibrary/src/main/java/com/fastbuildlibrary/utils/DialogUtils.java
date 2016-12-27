@@ -16,8 +16,9 @@ public class DialogUtils {
     /**
      * 第三方的Dialog
      * @param context
-     * @param title
-     * @param message
+     * @param title 标题
+     * @param message 内容
+     * @param color 对话框颜色
      */
     public static void showMessageDialog(Context context,String title, String message,String color){
         NiftyDialogBuilder dialogBuilder= NiftyDialogBuilder.getInstance(context);

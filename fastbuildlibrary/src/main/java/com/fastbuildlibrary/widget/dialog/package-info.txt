@@ -56,3 +56,53 @@
  *  
  * Fadein, Slideleft, Slidetop, SlideBottom, Slideright, Fall, Newspager, Fliph, Flipv, RotateBottom, RotateLeft, Slit, Shake, Sidefill
  */
+
+
+final NiftyDialogBuilder dialogBuilder= NiftyDialogBuilder.getInstance(MainActivity.this);
+                dialogBuilder
+                        .withTitle("Tip")
+                        .withMessage("恢复的数据会把当前应用的数据都覆盖掉，确定要恢复数据吗？")
+                        .withDialogColor("#00bbd4")
+                        .withTitleColor("#FFFFFF")
+                        .withDividerColor("#11000000")
+                        .withMessageColor("#FFFFFFFF")
+                        .withEffect(Effectstype.Fadein)
+                        .withButton1Text("确定")
+                        .setButton1Click(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        File file = new File(stringBuilder.toString());
+                                        FileUtil fileUtil = new FileUtil(getApplicationContext());
+                                        if (file.exists()) {
+                                            if (fileUtil.restoteDatabase(databaseName, stringBuilder.toString())) {
+                                                Message message = myHandler.obtainMessage();
+                                                message.obj = "恢复成功！";
+                                                message.what = 0x101;
+                                                myHandler.sendMessage(message);
+                                            } else {
+                                                Message message = myHandler.obtainMessage();
+                                                message.obj = "恢复失败！";
+                                                message.what = 0x100;
+                                                myHandler.sendMessage(message);
+                                            }
+                                        } else {
+                                            Message message = myHandler.obtainMessage();
+                                            message.obj = "文件不存在！";
+                                            message.what = 0x100;
+                                            myHandler.sendMessage(message);
+                                        }
+                                    }
+                                }).start();
+                                dialogBuilder.dismiss();
+                            }
+                        })
+                        .withButton2Text("取消")
+                        .setButton2Click(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialogBuilder.dismiss();
+                            }
+                        }).show();

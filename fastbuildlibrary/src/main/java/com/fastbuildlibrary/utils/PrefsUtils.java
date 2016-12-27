@@ -3,7 +3,7 @@ package com.fastbuildlibrary.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.fastbuildlibrary.commom.FBLApplication;
+import com.fastbuildlibrary.base.FBLApplication;
 import com.fastbuildlibrary.config.FBLBaseConstant;
 
 import java.io.ByteArrayInputStream;

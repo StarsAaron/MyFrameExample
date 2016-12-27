@@ -2,6 +2,15 @@
 ###########################################
 FBL Base基础类
 ###########################################
-Activity
-Fragment
+FBLActivityManager  Activity的管理类
+
+FBLApplication 继承于Application，初始化一些基本数据
+
+FBLBaseActivity 继承于AppCompatActivity，快捷创建Activity的方式
+
+FBLBaseFragmentActivity 继承于FragmentActivity，快捷创建Activity方式
+
+FBLException 自定义异常类
+
+FBLSwipeBackBaseActivity 继承于SwipeBackActivity，带滑动返回效果的Activity，快捷创建滑动返回效果的Activity方式
 */

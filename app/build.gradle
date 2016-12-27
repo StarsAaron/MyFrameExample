@@ -10,16 +10,19 @@ Properties props = new Properties()
 props.load(new FileInputStream(file("sign.properties")))
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 25
     buildToolsVersion "24.0.1"
 
     defaultConfig {
         applicationId "com.myframe"
         minSdkVersion 14
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        // Enabling multidex support.
+        //BuildConfig.java 文件中生成public final static String API_SERVER_URL = "http://test.flysnow.org/"
+        //可根据不同渠道动态修改IP地址
+//        buildConfigField 'String','API_SERVER_URL','"http://test.flysnow.org/"'
+        // dex突破65535的限制
 //        multiDexEnabled true
     }
 
@@ -71,6 +74,14 @@ android {
 
     //多渠道打包
     productFlavors {
+        google {
+            applicationId "com.myframe.google"
+//            buildConfigField 'String','API_SERVER_URL','"http://www.flysnow.org/"'
+        }
+        baidu {
+            applicationId "com.myframe.baidu"
+//            buildConfigField 'String','API_SERVER_URL','"http://www.flysnow.org/"'
+        }
     }
 
     //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
@@ -89,9 +100,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:24.1.1'
-    compile 'com.android.support:support-v4:24.1.1'
-    compile 'com.android.support:cardview-v7:24.1.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:support-v4:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
     //注解
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile 'com.jakewharton:butterknife:8.1.0'
@@ -116,4 +127,7 @@ dependencies {
     //底部栏
     compile 'com.aurelhubert:ahbottomnavigation:1.3.3'
     compile project(':fastbuildlibrary')
+    //volley
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    //    compile files('libs/fastjson-1.2.9.jar')
 }

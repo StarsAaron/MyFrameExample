@@ -3,7 +3,6 @@ package com.fastbuildlibrary.base;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.fastbuildlibrary.commom.FBLActivityManager;
 import com.fastbuildlibrary.utils.DialogUtils;
 import com.fastbuildlibrary.utils.LogUtils;
 import com.fastbuildlibrary.utils.StatusBarColorUtils;

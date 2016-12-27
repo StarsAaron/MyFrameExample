@@ -1,4 +1,4 @@
-package com.fastbuildlibrary.commom;
+package com.fastbuildlibrary.base;
 
 import android.Manifest;
 import android.annotation.TargetApi;
