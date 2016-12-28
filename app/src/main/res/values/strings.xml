@@ -39,4 +39,8 @@
     <string name="s7">SYSTEM_UI_FLAG_HIDE_NAVIGATION</string>
     <string name="s8">SYSTEM_UI_FLAG_LOW_PROFILE</string>
     <string name="s9">SYSTEM_UI_FLAG_LAYOUT_STABLE</string>
+    <!--ThumbnailActivity-->
+    <string name="btn01">图片合成水印</string>
+    <string name="btn02">绘制文字的的方式</string>
+    <string name="btn03">压缩图片</string>
 </resources>

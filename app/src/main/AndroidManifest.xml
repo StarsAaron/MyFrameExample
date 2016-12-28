@@ -74,13 +74,15 @@
             android:name=".example.SystemBarTestActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".example.CameraTestActivity"
+            android:name=".example.camera.CameraTestActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".example.wifi.WifiTestActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".example.ZhengZeTestActivity">
-        </activity>
+        <activity android:name=".example.SysEmailTestActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".example.thumbnail.ThumbnailActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
